@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Row, Col, Button, Image } from "react-bootstrap";
 import axios from 'axios';
 
+
 function ProductScreen() {
     const { id } = useParams();
     const [product, setProduct] = useState({});
@@ -40,6 +41,7 @@ function ProductScreen() {
                 </Button>
             </Col>
         </Row>
+
     </>
   )
 }
