@@ -1,6 +1,7 @@
-import Button from "react-bootstrap/Button"
+import Button from "react-bootstrap/Button";
 import { LinkContainer } from "react-router-bootstrap";
-function Jumbotron() {
+
+const Jumbotron = () => {
   return (
     <section className="bg-light p-5 jumbotron">
         <h2>EVERY GREAT ALBUM<br/> HAS A STORY</h2>

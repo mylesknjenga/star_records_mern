@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import axios from 'axios';
 import Product from "../components/Product";
+import { motion } from "framer-motion"
 
-function ProductsScreen() {
+const ProductsScreen = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -18,7 +18,11 @@ function ProductsScreen() {
     }, []);
     
     return (
-      <>
+      <motion.div
+        initial={{opacity: 0 }} 
+        animate={{opacity: 1, transition: {duration: 0.8}}} 
+        exit={{ opacity: 0}}
+      >
         <Container className='py-5'>
           <h1>Shop</h1>
           <Row>
@@ -29,7 +33,7 @@ function ProductsScreen() {
               ))}
           </Row>
           </Container>
-      </>
+      </motion.div>
     )
 }
 

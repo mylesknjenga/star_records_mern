@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Button, Image } from "react-bootstrap";
 import axios from 'axios';
+import { motion } from "framer-motion"
 
 
-function ProductScreen() {
+const ProductScreen = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
 
@@ -19,7 +20,11 @@ function ProductScreen() {
   });
 
   return (
-    <>
+    <motion.div
+      initial={{opacity: 0 }} 
+      animate={{opacity: 1, transition: {duration: 0.8}}} 
+      exit={{ opacity: 0}}
+    >
         <Row>
             <Col md={6}>
                 <Image src={product.image} fluid/>
@@ -42,7 +47,7 @@ function ProductScreen() {
             </Col>
         </Row>
 
-    </>
+    </motion.div>
   )
 }
 

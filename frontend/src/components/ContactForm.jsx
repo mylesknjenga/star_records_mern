@@ -6,8 +6,7 @@ import emailjs from '@emailjs/browser';
 import swal from 'sweetalert';
 
 
-
-function ContactForm() {
+const ContactForm = () => {
     const SERVICE_ID = "service_pxwo10p"
     const TEMPLATE_ID = "template_gwk6y4l"
     const PUBLIC_KEY = "6TZYpOOqH6F35nxBV"
