@@ -29,14 +29,14 @@ function ContactForm() {
     
 
   return (
-    <Form ref={form} onSubmit={sendMessage}>
+    <Form ref={form} onSubmit={sendMessage} className="py-3">
         <Row className="mb-3">
-            <Form.Group as={Col} controlId="firstname">
+            <Form.Group as={Col} controlId="firstname" xs={12}>
                 <Form.Label>First name</Form.Label>
                 <Form.Control type="text" placeholder="Enter First name" name="firstname" required/>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="lastname">
+            <Form.Group as={Col} controlId="lastname" xs={12}>
                 <Form.Label>Last name</Form.Label>
                 <Form.Control type="text" placeholder="Enter Last name" name="lastname" required/>
                 </Form.Group>
@@ -51,7 +51,7 @@ function ContactForm() {
             <Form.Label>Message</Form.Label>
             <Form.Control as="textarea" rows={3} placeholder="Enter message" name="message" required/>
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="outline-dark" type="submit">
             Send
         </Button>
     </Form>
