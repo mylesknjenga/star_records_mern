@@ -11,16 +11,14 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main className="py-4">
-        <Container>
+        <main>
           <Routes>
             <Route path="/" element={<HomeScreen />}/>
             <Route path="/products" element={<ProductsScreen />}/>
             <Route path="/product/:id" element={<ProductScreen />}/>
             <Route path="/contact" element={<ContactScreen />}/>
           </Routes>
-        </Container>
-      </main>
+        </main>
       <Footer />
     </Router>
   );

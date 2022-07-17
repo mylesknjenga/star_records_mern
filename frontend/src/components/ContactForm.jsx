@@ -31,12 +31,12 @@ function ContactForm() {
   return (
     <Form ref={form} onSubmit={sendMessage} className="py-3">
         <Row className="mb-3">
-            <Form.Group as={Col} controlId="firstname" xs={12}>
+            <Form.Group as={Col} controlId="firstname" xs={12} md={6}>
                 <Form.Label>First name</Form.Label>
                 <Form.Control type="text" placeholder="Enter First name" name="firstname" required/>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="lastname" xs={12}>
+            <Form.Group as={Col} controlId="lastname" xs={12} md={6}>
                 <Form.Label>Last name</Form.Label>
                 <Form.Control type="text" placeholder="Enter Last name" name="lastname" required/>
                 </Form.Group>

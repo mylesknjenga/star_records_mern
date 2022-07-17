@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import axios from 'axios';
 import Product from "../components/Product";
 
@@ -19,6 +19,7 @@ function ProductsScreen() {
     
     return (
       <>
+        <Container className='py-5'>
           <h1>Shop</h1>
           <Row>
               {products.map(product => (
@@ -27,6 +28,7 @@ function ProductsScreen() {
                   </Col>
               ))}
           </Row>
+          </Container>
       </>
     )
 }

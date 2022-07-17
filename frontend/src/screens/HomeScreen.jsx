@@ -1,10 +1,11 @@
-import { Row, Col } from "react-bootstrap";
+
+import Jumbotron from "../components/Jumbotron";
 
 function HomeScreen() {
   
   return (
     <>
-      <h1>Home</h1>
+      <Jumbotron />
     </>
   )
 }
