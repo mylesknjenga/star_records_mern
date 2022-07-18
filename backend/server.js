@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mysql from "mysql2";
+import path from "path";
 // import products from "./data/products.js";
 
 dotenv.config();
@@ -40,6 +41,20 @@ app.get("/api/products/:id", async (req, res) => {
     const product = await getProduct(req.params.id)
     res.json(product)
 });
+
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+    })
+} else {
+    app.get("/", (req,res) => {
+        res.send("API is running....")
+    })
+};
 
 app.listen(PORT, () => {
     console.log(`Listening in ${process.env.NODE_ENV} on ${PORT}`)
