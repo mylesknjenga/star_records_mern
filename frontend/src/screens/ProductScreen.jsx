@@ -30,18 +30,18 @@ const ProductScreen = () => {
                 <Image src={product.image} fluid/>
             </Col>
             <Col md={3}>
-                <h2>{product.name}</h2>
+                <h2>{product.title}</h2>
+                <h2>By: {product.artist}</h2>
                 <h2>{product.rating} from {product.numReviews} reviews</h2>
                 <h2>${product.price}</h2>
                 <p>{product.description}</p>
             </Col>
             <Col md={3}>
                 <h2>price: {product.price}</h2>
-                <h2>{product.countInStock > 0 ? "In stock" : "Out of Stock"}</h2>
                 <Button 
                     className='btn btn-block'
                     type="button"
-                    disabled={product.countInStock === 0}>
+                    >
                         Add to Cart
                 </Button>
             </Col>

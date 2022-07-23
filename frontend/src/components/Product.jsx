@@ -12,10 +12,12 @@ const Product = ({ product }) => {
 
             <Card.Title className="py-3">
                 <Link to={`/product/${product.id}`}>
-                    <strong>{product.name}</strong>
+                    <strong>{product.title}</strong>
                 </Link>
             </Card.Title>
-
+            <Card.Text>
+                By: {product.artist}
+            </Card.Text>
             <Card.Text>
                 {product.rating} stars from {product.numReviews} reviews
             </Card.Text>
