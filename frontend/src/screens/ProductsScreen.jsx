@@ -36,6 +36,20 @@ const ProductsScreen = () => {
                     <option value="all">All</option>
                     <option value="Hip hop">Hip pop</option>
                     <option value="R&B">R&B</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Jazz">Jazz</option>
+                  </select>
+                </div>
+                <div>Filter by Price:</div>
+                <div>
+                  <select
+                    name="category-list"
+                    id="category-list"
+                  >
+                    <option value="all">All</option>
+                    <option value="Hip hop">Below $25</option>
+                    <option value="R&B">Between $25-$65</option>
+                    <option value="R&B">Above $65</option>
                   </select>
                 </div>
             </Col>
