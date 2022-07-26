@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mysql from "mysql2";
 import path from "path";
-// import products from "./data/products.js";
+
 
 dotenv.config();
 
@@ -17,12 +17,14 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_DB
 }).promise();
 
+
+//Routes
 const getProducts = async () => {
     const [ rows ] = await pool.query("SELECT * FROM products");
     return rows;
 };
 
-const getProduct = async (id) => {
+const getProduct = async id => {
     const [ rows ] = await pool.query(`
         SELECT *
         FROM products
@@ -42,6 +44,8 @@ app.get("/api/products/:id", async (req, res) => {
     res.json(product)
 });
 
+
+//deployment
 const __dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {

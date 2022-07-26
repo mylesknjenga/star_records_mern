@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import axios from 'axios';
 import Product from "../components/Product";
@@ -6,16 +6,57 @@ import { motion } from "framer-motion";
 
 const ProductsScreen = () => {
     const [products, setProducts] = useState([]);
+    const [filteredCategory, setFilteredCategory] = useState([]);
 
     useEffect(() => {
       const fetchProducts = async () => {
         const { data } = await axios.get("/api/products");
   
         setProducts(data)
+        setFilteredCategory(data)
       }
   
       fetchProducts();
     }, []);
+
+    const filterCategory = (val) => {
+          if ( val === "all") {
+            setFilteredCategory(products)
+            return
+          } else {
+            const result = products.filter((product) => {
+              return product.category === val
+            })
+            setFilteredCategory(result)
+            return
+          }
+    }
+
+    const filterPrice = (val) => {
+      if ( val === "reset") {
+        setFilteredCategory(products)
+        return
+      } else if (val === 25){
+        const result = products.filter((product) => {
+          console.log(Number(product.price) < val)
+          return Number(product.price) < val
+        })
+        setFilteredCategory(result)
+        return
+      } else if (val === 30) {
+        const result = products.filter((product) => {
+          return Number(product.price) >= 25 && Number(product.price) <= 70
+        })
+        setFilteredCategory(result)
+        return
+      } else {
+        const result = products.filter((product) => {
+          return Number(product.price) > val
+        })
+        setFilteredCategory(result)
+        return
+      }
+    }
 
     
     return (
@@ -27,36 +68,35 @@ const ProductsScreen = () => {
         <Container className='py-5' fluid>
           <Row>
             <Col sm={12} md={2} >
-              <div>Filter by Category:</div>
-                <div>
-                  <select
-                    name="category-list"
-                    id="category-list"
-                  >
-                    <option value="all">All</option>
-                    <option value="Hip hop">Hip pop</option>
-                    <option value="R&B">R&B</option>
-                    <option value="Rock">Rock</option>
-                    <option value="Jazz">Jazz</option>
-                  </select>
-                </div>
-                <div>Filter by Price:</div>
-                <div>
-                  <select
-                    name="category-list"
-                    id="category-list"
-                  >
-                    <option value="all">All</option>
-                    <option value="Hip hop">Below $25</option>
-                    <option value="R&B">Between $25-$65</option>
-                    <option value="R&B">Above $65</option>
-                  </select>
-                </div>
+              
+                <button
+                onClick={() => filterCategory("all")}
+              >All</button>
+            <button
+                onClick={() => filterCategory("Hip hop")}
+              >Hip hop</button>
+              <button
+                onClick={() => filterCategory("R&B")}
+              >R&B</button>
+                <button
+                onClick={() => filterPrice("reset")}
+              >Reset</button>
+            <button
+                onClick={() => filterPrice(25)}
+              >Below $25</button>
+              <button
+                onClick={() => filterPrice(30)}
+              >Between $25-$70</button>
+              <button
+                onClick={() => filterPrice(70)}
+              >Above $70</button>
+              
+            
             </Col>
             <Col className="mx-5">
               <h1>Shop</h1>
               <Row>
-                  {products.map(product => (
+                  {filteredCategory.map(product => (
                       <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
                           <Product product={product} />
                       </Col>

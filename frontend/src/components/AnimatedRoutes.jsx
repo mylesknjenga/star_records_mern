@@ -3,6 +3,7 @@ import HomeScreen from "../screens/HomeScreen";
 import ProductScreen from "../screens/ProductScreen";
 import ProductsScreen from "../screens/ProductsScreen";
 import ContactScreen from "../screens/ContactScreen";
+import AdminScreen from "../screens/AdminScreen";
 import { AnimatePresence } from "framer-motion";
 
 function AnimatedRoutes() {
@@ -16,6 +17,7 @@ function AnimatedRoutes() {
             <Route path="/products" element={<ProductsScreen />}/>
             <Route path="/product/:id" element={<ProductScreen />}/>
             <Route path="/contact" element={<ContactScreen />}/>
+            <Route path="/admin" element={<AdminScreen />}/>
     </Routes>
     </AnimatePresence>
     
