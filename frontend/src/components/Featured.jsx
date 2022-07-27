@@ -22,7 +22,7 @@ const Featured = () => {
           <h2 className="py-2">Featured Albums</h2>
           <Row>
             {products.map(product => {
-                if (product.rating >= 4) {
+                if (product.rating >= 4.8) {
                     return <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
                         <Product product={product} />
                     </Col>;
